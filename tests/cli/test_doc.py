@@ -26,7 +26,7 @@ def test_gen_wrong_path(runner: CliRunner, rabbit_async_project: Path):
     app_path = f'{rabbit_async_project / "app" / "serve"}:app1'
     r = runner.invoke(cli, ["docs", "gen", app_path])
     assert r.exit_code == 2
-    assert "Please, input module like [python_file:propan_app_name]" in r.stdout
+    assert "Please, input module like [python_file:propan_app_name]" in (r.stdout + r.stderr)
 
 
 def test_serve_rabbit_docs(
